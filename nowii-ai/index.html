@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>nowii·ai — Enterprise AI Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SPLASH -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-orb splash-orb-1"></div>
+    <div class="splash-orb splash-orb-2"></div>
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M8 24V8l8 10 8-10v16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="26" cy="8" r="2.5" fill="currentColor"/>
+        </svg>
+        <div class="splash-logo-ring"></div>
+      </div>
+      <h1 class="splash-title">nowii<span>·</span>ai</h1>
+      <p class="splash-sub">Initializing enterprise workspace</p>
+      <div class="splash-bar"><span></span></div>
+      <div class="splash-steps" id="splashSteps">
+        <span class="splash-step active">Authenticating</span>
+        <span class="splash-step">Loading data</span>
+        <span class="splash-step">Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app" id="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <header class="sidebar-head">
+        <div class="brand">
+          <span class="brand-mark">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M8 24V8l8 10 8-10v16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-name">nowii<span>·</span>ai</span>
+        </div>
+        <button class="icon-btn sidebar-toggle" id="sidebarClose" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+
+      <button class="workspace-switcher" id="workspaceSwitcher">
+        <span class="workspace-avatar" id="wsAvatar">AC</span>
+        <span class="workspace-info">
+          <strong id="wsName">Acme Corp</strong>
+          <small id="wsPlan">Enterprise · 42 seats</small>
+        </span>
+        <svg class="workspace-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+      </button>
+
+      <nav class="nav">
+        <span class="nav-section">Workspace</span>
+        <button class="nav-item active" data-view="overview" data-key="1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span>Overview</span>
+          <span class="nav-hint">1</span>
+        </button>
+        <button class="nav-item" data-view="operations" data-key="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.2 4.2l4.3 4.3M15.5 15.5l4.3 4.3M1 12h6M17 12h6M4.2 19.8l4.3-4.3M15.5 8.5l4.3-4.3"/></svg>
+          <span>Operations</span>
+          <span class="nav-badge" id="opsBadge">3</span>
+          <span class="nav-hint">2</span>
+        </button>
+        <button class="nav-item" data-view="customers" data-key="3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>Customers</span>
+          <span class="nav-hint">3</span>
+        </button>
+        <button class="nav-item" data-view="copilot" data-key="4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12h8M12 8v8"/></svg>
+          <span>AI Copilot</span>
+          <span class="nav-tag">BETA</span>
+          <span class="nav-hint">4</span>
+        </button>
+        <button class="nav-item" data-view="reports" data-key="5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          <span>Reports</span>
+          <span class="nav-hint">5</span>
+        </button>
+        <button class="nav-item" data-view="team" data-key="6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>Team</span>
+          <span class="nav-hint">6</span>
+        </button>
+
+        <span class="nav-section">Account</span>
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H2a2 2 0 110-4h.09A1.65 1.65 0 004 8a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H8a1.65 1.65 0 001-1.51V2a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V8a1.65 1.65 0 001.51 1H22a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          <span>Settings</span>
+        </button>
+        <button class="nav-item" data-view="help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          <span>Help & Support</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-status" id="sidebarStatus">
+        <div class="status-head">
+          <span class="status-dot" id="systemStatus"></span>
+          <span class="status-label">All systems operational</span>
+        </div>
+        <div class="status-meta">
+          <span id="statusUptime">99.98%</span>
+          <span>uptime · 30d</span>
+        </div>
+        <div class="status-progress"><span style="width:99.98%"></span></div>
+      </div>
+
+      <footer class="sidebar-foot">
+        <button class="user-card" id="userMenuBtn">
+          <span class="user-avatar">NC</span>
+          <span class="user-info">
+            <strong>nowii-core</strong>
+            <small>Admin</small>
+          </span>
+          <svg class="user-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </footer>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+
+        <div class="breadcrumbs">
+          <span class="bc-muted">Acme Corp</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="bc-sep"><path d="M9 18l6-6-6-6"/></svg>
+          <span class="bc-current" id="bcCurrent">Overview</span>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="global-search-wrap">
+            <button class="topbar-search" id="searchTrigger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+              <span>Cerca…</span>
+              <kbd>⌘K</kbd>
+            </button>
+            <div class="quick-search" id="quickSearch">
+              <div class="quick-search-input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+                <input type="text" id="quickSearchInput" placeholder="Cerca eventi, clienti, team…" />
+                <kbd>ESC</kbd>
+              </div>
+              <div class="quick-search-results" id="quickSearchResults"></div>
+            </div>
+          </div>
+
+          <button class="icon-btn" id="helpBtn" title="Aiuto (?)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          </button>
+
+          <button class="icon-btn has-badge" id="notifBtn" title="Notifiche">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+            <span class="badge" id="notifBadge">4</span>
+          </button>
+
+          <button class="copilot-trigger" id="copilotTrigger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12h8M12 8v8"/></svg>
+            <span>AI Copilot</span>
+            <kbd>⌘J</kbd>
+          </button>
+        </div>
+      </header>
+
+      <div class="view-container" id="viewContainer">
+
+        <!-- ============ OVERVIEW ============ -->
+        <section class="view active" id="view-overview">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Operations Overview</h1>
+              <p class="view-sub" id="overviewSub">Tutti i sistemi · ultimo aggiornamento <span id="lastUpdate" class="live-text">ora</span></p>
+            </div>
+            <div class="view-head-actions">
+              <div class="segment-control" id="timeframeControl">
+                <button data-range="24h" class="active">24h</button>
+                <button data-range="7d">7 giorni</button>
+                <button data-range="30d">30 giorni</button>
+                <button data-range="90d">90 giorni</button>
+              </div>
+              <button class="icon-btn" id="refreshBtn" title="Aggiorna (R)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="kpi-grid" id="kpiGrid"></div>
+
+          <div class="grid grid-2-1">
+            <article class="panel panel-chart">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">Revenue & Traffic</h2>
+                  <p class="panel-sub" id="revenueSub">Ultimi 24h · EUR</p>
+                </div>
+                <div class="panel-legend">
+                  <span><i style="background:var(--brand)"></i>Revenue</span>
+                  <span><i style="background:var(--info)"></i>Sessions</span>
+                </div>
+              </header>
+              <div class="panel-body">
+                <canvas id="revenueChart" class="chart-canvas"></canvas>
+              </div>
+              <footer class="panel-foot">
+                <div class="chart-stats" id="chartStats"></div>
+              </footer>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">System Health</h2>
+                  <p class="panel-sub">Microservizi</p>
+                </div>
+                <button class="icon-btn sm" id="servicesRefresh" title="Aggiorna">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5"/></svg>
+                </button>
+              </header>
+              <div class="panel-body">
+                <div class="services-list" id="servicesList"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="grid grid-2-1">
+            <article class="panel panel-map">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">Global Activity</h2>
+                  <p class="panel-sub">Data center traffic · real-time</p>
+                </div>
+                <div class="panel-tag live"><span></span>Live</div>
+              </header>
+              <div class="panel-body panel-body-map">
+                <canvas id="mapCanvas" class="map-canvas"></canvas>
+                <div class="map-legend">
+                  <span><i></i> <b id="mapActiveNodes">0</b> nodi attivi</span>
+                  <span><i class="accent"></i> <b id="mapRequests">0</b> req/s</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">Event Timeline</h2>
+                  <p class="panel-sub">Ultimi eventi</p>
+                </div>
+                <button class="link-btn" data-view-jump="operations">Vedi tutti →</button>
+              </header>
+              <div class="panel-body">
+                <div class="event-timeline" id="eventTimeline"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="grid grid-1-1-1">
+            <article class="panel">
+              <header class="panel-head">
+                <h2 class="panel-title">Top Regions</h2>
+              </header>
+              <div class="panel-body">
+                <div class="regions-list" id="regionsList"></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head">
+                <h2 class="panel-title">Top Services</h2>
+              </header>
+              <div class="panel-body">
+                <div class="top-services" id="topServices"></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head">
+                <h2 class="panel-title">Audit Log</h2>
+              </header>
+              <div class="panel-body">
+                <div class="audit-list" id="auditList"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="quick-actions" id="quickActions">
+            <button class="qa-btn" data-qa="new-report" title="Nuovo report">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <button class="qa-btn" data-qa="ask-copilot" title="Chiedi al Copilot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12h8M12 8v8"/></svg>
+            </button>
+            <button class="qa-btn" data-qa="invite" title="Invita membro">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>
+            </button>
+            <button class="qa-btn" data-qa="top" title="Torna su">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- ============ OPERATIONS ============ -->
+        <section class="view" id="view-operations">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Operations Center</h1>
+              <p class="view-sub">Monitoraggio eventi, incidenti e deploy in tempo reale</p>
+            </div>
+            <div class="view-head-actions">
+              <button class="btn-secondary" id="exportOpsBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Esporta CSV
+              </button>
+              <button class="btn-primary" id="newIncidentBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Nuovo incidente
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-row" id="opsStats"></div>
+
+          <div class="filters-bar">
+            <div class="filter-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="text" id="opsSearch" placeholder="Cerca eventi, servizi, ID…" />
+            </div>
+            <div class="filter-chips" id="severityFilter">
+              <button class="chip active" data-sev="all">Tutti</button>
+              <button class="chip" data-sev="critical"><span class="dot danger"></span>Critical</button>
+              <button class="chip" data-sev="warning"><span class="dot warning"></span>Warning</button>
+              <button class="chip" data-sev="info"><span class="dot info"></span>Info</button>
+              <button class="chip" data-sev="success"><span class="dot success"></span>Success</button>
+            </div>
+            <div class="bulk-actions" id="opsBulkActions" hidden>
+              <span class="bulk-count"><b id="opsSelectedCount">0</b> selezionati</span>
+              <button class="btn-ghost" data-bulk="resolve">Risolvi</button>
+              <button class="btn-ghost" data-bulk="snooze">Snooze</button>
+              <button class="btn-ghost danger" data-bulk="delete">Elimina</button>
+            </div>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table class="data-table" id="opsTable">
+                <thead>
+                  <tr>
+                    <th class="col-check"><input type="checkbox" id="opsSelectAll" /></th>
+                    <th class="sortable" data-sort="id">ID <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="severity">Severity <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="title">Evento <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="service">Servizio <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="region">Regione <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="time">Timestamp <span class="sort-arrow"></span></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="opsTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- ============ CUSTOMERS ============ -->
+        <section class="view" id="view-customers">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Customers</h1>
+              <p class="view-sub">Panoramica clienti, piani e stato account</p>
+            </div>
+            <div class="view-head-actions">
+              <button class="btn-secondary" id="exportCustBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Esporta
+              </button>
+              <button class="btn-primary" id="newCustBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Nuovo cliente
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-row" id="custStats"></div>
+
+          <div class="filters-bar">
+            <div class="filter-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="text" id="custSearch" placeholder="Cerca cliente, email, azienda…" />
+            </div>
+            <div class="filter-chips" id="planFilter">
+              <button class="chip active" data-plan="all">Tutti</button>
+              <button class="chip" data-plan="enterprise">Enterprise</button>
+              <button class="chip" data-plan="pro">Pro</button>
+              <button class="chip" data-plan="starter">Starter</button>
+            </div>
+            <select class="select-input" id="custSort">
+              <option value="mrr-desc">MRR ↓</option>
+              <option value="mrr-asc">MRR ↑</option>
+              <option value="health-desc">Health ↓</option>
+              <option value="recent">Più recenti</option>
+              <option value="name">Nome A-Z</option>
+            </select>
+          </div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table class="data-table" id="custTable">
+                <thead>
+                  <tr>
+                    <th class="col-check"><input type="checkbox" id="custSelectAll" /></th>
+                    <th class="sortable" data-sort="name">Cliente <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="plan">Piano <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="mrr">MRR <span class="sort-arrow"></span></th>
+                    <th class="sortable" data-sort="health">Stato <span class="sort-arrow"></span></th>
+                    <th>Ultimo accesso</th>
+                    <th class="sortable" data-sort="sentiment">Sentiment <span class="sort-arrow"></span></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="custTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- ============ COPILOT ============ -->
+        <section class="view" id="view-copilot">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">AI Copilot</h1>
+              <p class="view-sub">Interroga i tuoi dati in linguaggio naturale</p>
+            </div>
+            <div class="view-head-actions">
+              <button class="btn-secondary" id="clearCopilot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+                Nuova sessione
+              </button>
+            </div>
+          </div>
+
+          <div class="copilot-wrap">
+            <div class="copilot-messages" id="copilotMessages">
+              <div class="copilot-welcome">
+                <div class="copilot-logo">
+                  <svg viewBox="0 0 32 32" fill="none"><path d="M8 24V8l8 10 8-10v16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="8" r="2.5" fill="currentColor"/></svg>
+                </div>
+                <h2>Ciao, sono il tuo Copilot</h2>
+                <p>Posso analizzare dati, generare report, trovare anomalie e rispondere a domande sui tuoi sistemi.</p>
+                <div class="copilot-suggestions">
+                  <button data-prompt="Quanti incidenti critici ci sono stati oggi?">Incidenti critici oggi</button>
+                  <button data-prompt="Mostrami i top 5 clienti per MRR">Top 5 clienti per MRR</button>
+                  <button data-prompt="Riassumi lo stato dei sistemi">Stato sistemi</button>
+                  <button data-prompt="Ci sono anomalie nel traffico recente?">Anomalie traffico</button>
+                  <button data-prompt="Genera un report settimanale">Report settimanale</button>
+                  <button data-prompt="Quali servizi hanno latenza alta?">Servizi lenti</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="copilot-input-wrap">
+              <div class="copilot-input">
+                <textarea id="copilotInput" placeholder="Chiedi qualsiasi cosa sui tuoi dati…" rows="1"></textarea>
+                <div class="copilot-input-actions">
+                  <button class="icon-btn sm" id="copilotAttach" title="Allega">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+                  </button>
+                  <button class="icon-btn sm" id="copilotVoice" title="Voce">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1M12 18v4M8 22h8"/></svg>
+                  </button>
+                  <button class="icon-btn sm primary" id="copilotSend" title="Invia">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <p class="copilot-foot">Il Copilot analizza solo i tuoi dati aziendali · Nessuna informazione lascia il workspace</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ REPORTS ============ -->
+        <section class="view" id="view-reports">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Reports</h1>
+              <p class="view-sub">Genera e gestisci report intelligenti</p>
+            </div>
+            <div class="view-head-actions">
+              <div class="segment-control" id="reportsFilter">
+                <button data-type="all" class="active">Tutti</button>
+                <button data-type="weekly">Weekly</button>
+                <button data-type="monthly">Monthly</button>
+                <button data-type="incident">Incident</button>
+              </div>
+              <button class="btn-primary" id="newReportBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Nuovo report
+              </button>
+            </div>
+          </div>
+
+          <div class="reports-grid" id="reportsGrid"></div>
+        </section>
+
+        <!-- ============ TEAM ============ -->
+        <section class="view" id="view-team">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Team</h1>
+              <p class="view-sub">Membri del workspace e permessi</p>
+            </div>
+            <div class="view-head-actions">
+              <button class="btn-primary" id="inviteBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Invita membro
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-row" id="teamStats"></div>
+
+          <article class="panel">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Membro</th>
+                    <th>Ruolo</th>
+                    <th>Reparto</th>
+                    <th>Stato</th>
+                    <th>Ultimo accesso</th>
+                    <th>Permessi</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="teamTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- ============ SETTINGS ============ -->
+        <section class="view" id="view-settings">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Settings</h1>
+              <p class="view-sub">Configura il tuo workspace</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">Aspetto</h2></header>
+              <div class="panel-body">
+                <div class="setting-row">
+                  <div>
+                    <strong>Tema</strong>
+                    <small>Scegli tra light e dark mode</small>
+                  </div>
+                  <div class="segmented" id="themeSegmented">
+                    <button data-theme="dark" class="active">Dark</button>
+                    <button data-theme="light">Light</button>
+                  </div>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Densità</strong>
+                    <small>Compatta o ariosa</small>
+                  </div>
+                  <div class="segmented" id="densitySegmented">
+                    <button data-density="compact">Compatta</button>
+                    <button data-density="default" class="active">Default</button>
+                    <button data-density="comfortable">Comfortevole</button>
+                  </div>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Animazioni</strong>
+                    <small>Effetti visivi e transizioni</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="animToggle" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Effetti magnetici</strong>
+                    <small>Bottoni che seguono il cursore</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="magneticToggle" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">Notifiche</h2></header>
+              <div class="panel-body">
+                <div class="setting-row">
+                  <div>
+                    <strong>Incidenti critici</strong>
+                    <small>Notifica immediata per P1</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="notifCritical" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Deploy completati</strong>
+                    <small>Avvisa quando termina un deploy</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="notifDeploy" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Nuovi clienti</strong>
+                    <small>Avvisa quando firma un cliente</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="notifCustomer" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Riepilogo settimanale</strong>
+                    <small>Email ogni lunedì mattina</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="notifWeekly" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">AI Copilot</h2></header>
+              <div class="panel-body">
+                <div class="setting-row-column">
+                  <div>
+                    <strong>OpenAI API Key</strong>
+                    <small>Opzionale — per risposte reali. Altrimenti uso la demo integrata.</small>
+                  </div>
+                  <input type="password" id="apiKeyInput" placeholder="sk-..." />
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Auto-analisi incidenti</strong>
+                    <small>L'AI classifica e suggerisce azioni automaticamente</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="autoAnalyze" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Streaming risposte</strong>
+                    <small>Mostra le risposte lettera per lettera</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="streamToggle" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">Dati & Privacy</h2></header>
+              <div class="panel-body">
+                <div class="setting-row">
+                  <div>
+                    <strong>Auto-refresh</strong>
+                    <small>Aggiorna dati automaticamente ogni 30 secondi</small>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="autoRefreshToggle" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Esporta dati</strong>
+                    <small>Scarica tutti i tuoi dati in formato JSON</small>
+                  </div>
+                  <button class="btn-secondary" id="exportAllBtn">Esporta</button>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Ripristina impostazioni</strong>
+                    <small>Riporta tutto allo stato iniziale</small>
+                  </div>
+                  <button class="btn-secondary danger" id="resetAllBtn">Reset</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ============ HELP ============ -->
+        <section class="view" id="view-help">
+          <div class="view-head">
+            <div>
+              <h1 class="view-title">Help & Support</h1>
+              <p class="view-sub">Guide, scorciatoie e contatti</p>
+            </div>
+          </div>
+
+          <div class="help-grid">
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">Scorciatoie da tastiera</h2></header>
+              <div class="panel-body">
+                <div class="shortcuts-list">
+                  <div class="shortcut-row"><span>Command palette</span><div><kbd>⌘</kbd><kbd>K</kbd></div></div>
+                  <div class="shortcut-row"><span>Apri AI Copilot</span><div><kbd>⌘</kbd><kbd>J</kbd></div></div>
+                  <div class="shortcut-row"><span>Cerca</span><div><kbd>/</kbd></div></div>
+                  <div class="shortcut-row"><span>Aggiorna dati</span><div><kbd>R</kbd></div></div>
+                  <div class="shortcut-row"><span>Chiudi modali</span><div><kbd>ESC</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Overview</span><div><kbd>1</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Operations</span><div><kbd>2</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Customers</span><div><kbd>3</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Copilot</span><div><kbd>4</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Reports</span><div><kbd>5</kbd></div></div>
+                  <div class="shortcut-row"><span>Vai a Team</span><div><kbd>6</kbd></div></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <header class="panel-head"><h2 class="panel-title">Guide rapide</h2></header>
+              <div class="panel-body">
+                <div class="guide-list">
+                  <button class="guide-item" data-guide="getting-started">
+                    <div class="guide-icon">🚀</div>
+                    <div><strong>Iniziare con nowii·ai</strong><small>5 minuti per configurare il workspace</small></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+                  </button>
+                  <button class="guide-item" data-guide="copilot">
+                    <div class="guide-icon">🤖</div>
+                    <div><strong>Usare l'AI Copilot</strong><small>Domande, analisi, report automatici</small></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+                  </button>
+                  <button class="guide-item" data-guide="incidents">
+                    <div class="guide-icon">🚨</div>
+                    <div><strong>Gestire incidenti</strong><small>Workflow di risoluzione P1/P2</small></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+                  </button>
+                  <button class="guide-item" data-guide="api">
+                    <div class="guide-icon">🔌</div>
+                    <div><strong>API & integrazioni</strong><small>Webhook, SDK e automazioni</small></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel panel-wide">
+              <header class="panel-head"><h2 class="panel-title">Contattaci</h2></header>
+              <div class="panel-body">
+                <div class="contact-grid">
+                  <button class="contact-card" data-contact="chat">
+                    <div class="contact-icon chat">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <strong>Chat live</strong>
+                    <small>Risposta in &lt; 2 min</small>
+                  </button>
+                  <button class="contact-card" data-contact="email">
+                    <div class="contact-icon email">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+                    </div>
+                    <strong>Email</strong>
+                    <small>support@nowii.ai</small>
+                  </button>
+                  <button class="contact-card" data-contact="call">
+                    <div class="contact-icon call">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <strong>Chiama</strong>
+                    <small>+39 02 1234 5678</small>
+                  </button>
+                  <button class="contact-card" data-contact="docs">
+                    <div class="contact-icon docs">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                    </div>
+                    <strong>Documentazione</strong>
+                    <small>Guide e API reference</small>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- AI COPILOT DRAWER -->
+  <aside class="copilot-drawer" id="copilotDrawer">
+    <header class="copilot-drawer-head">
+      <div class="copilot-drawer-brand">
+        <span class="copilot-drawer-logo">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M8 24V8l8 10 8-10v16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="8" r="2.5" fill="currentColor"/></svg>
+        </span>
+        <div>
+          <strong>AI Copilot</strong>
+          <small>Workspace: Acme Corp</small>
+        </div>
+      </div>
+      <button class="icon-btn" id="copilotClose" aria-label="Chiudi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </header>
+
+    <div class="copilot-drawer-body" id="drawerMessages">
+      <div class="drawer-welcome">
+        <div class="drawer-welcome-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <p>Ciao, come posso aiutarti oggi?</p>
+        <div class="drawer-suggestions">
+          <button data-prompt="Riassumi la situazione">Riassumi la situazione</button>
+          <button data-prompt="Cosa richiede attenzione?">Cosa richiede attenzione?</button>
+          <button data-prompt="Mostra i KPI principali">KPI principali</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="copilot-drawer-input">
+      <textarea id="drawerInput" placeholder="Chiedi al Copilot…" rows="1"></textarea>
+      <button class="icon-btn primary" id="drawerSend">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </aside>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- MODAL: WORKSPACE SWITCHER -->
+  <div class="modal-backdrop" id="wsBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Cambia workspace</h2>
+        <button class="icon-btn" data-close-modal="wsBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body"><div class="ws-list" id="wsList"></div></div>
+    </div>
+  </div>
+
+  <!-- MODAL: NOTIFICHE -->
+  <div class="modal-backdrop" id="notifBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Notifiche</h2>
+        <div class="modal-head-actions">
+          <button class="link-btn" id="markAllRead">Segna tutte come lette</button>
+          <button class="icon-btn" data-close-modal="notifBackdrop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </header>
+      <div class="modal-body"><div class="notif-list" id="notifList"></div></div>
+    </div>
+  </div>
+
+  <!-- MODAL: EVENT DETAIL -->
+  <div class="modal-backdrop" id="eventBackdrop">
+    <div class="modal">
+      <header class="modal-head">
+        <div id="eventModalHead"></div>
+        <button class="icon-btn" data-close-modal="eventBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body" id="eventModalBody"></div>
+      <footer class="modal-foot">
+        <button class="btn-secondary" data-close-modal="eventBackdrop">Chiudi</button>
+        <button class="btn-secondary" id="copyEventBtn">Copia dettagli</button>
+        <button class="btn-primary" id="resolveEventBtn">Risolvi</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL: CUSTOMER DETAIL -->
+  <div class="modal-backdrop" id="custBackdrop">
+    <div class="modal modal-lg">
+      <header class="modal-head">
+        <div id="custModalHead"></div>
+        <button class="icon-btn" data-close-modal="custBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body" id="custModalBody"></div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW REPORT -->
+  <div class="modal-backdrop" id="reportBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Nuovo report</h2>
+        <button class="icon-btn" data-close-modal="reportBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Tipo di report</label>
+          <select id="reportType" class="select-input">
+            <option value="weekly">Weekly Summary</option>
+            <option value="monthly">Monthly Review</option>
+            <option value="incident">Incident Report</option>
+            <option value="financial">Financial Overview</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Periodo</label>
+          <select id="reportPeriod" class="select-input">
+            <option value="7d">Ultimi 7 giorni</option>
+            <option value="30d">Ultimi 30 giorni</option>
+            <option value="90d">Ultimi 90 giorni</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Reparti</label>
+          <div class="checkbox-grid">
+            <label class="checkbox-row"><input type="checkbox" checked> Operations</label>
+            <label class="checkbox-row"><input type="checkbox" checked> Finance</label>
+            <label class="checkbox-row"><input type="checkbox"> Marketing</label>
+            <label class="checkbox-row"><input type="checkbox"> Engineering</label>
+          </div>
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <button class="btn-secondary" data-close-modal="reportBackdrop">Annulla</button>
+        <button class="btn-primary" id="generateReportBtn">Genera report</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW INCIDENT -->
+  <div class="modal-backdrop" id="incidentBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Nuovo incidente</h2>
+        <button class="icon-btn" data-close-modal="incidentBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Titolo</label>
+          <input type="text" id="incTitle" placeholder="Es. API gateway latency spike" />
+        </div>
+        <div class="form-row">
+          <label>Severity</label>
+          <select id="incSeverity" class="select-input">
+            <option value="critical">Critical (P1)</option>
+            <option value="warning" selected>Warning (P2)</option>
+            <option value="info">Info (P3)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Servizio</label>
+          <select id="incService" class="select-input">
+            <option>api-gateway</option>
+            <option>auth-service</option>
+            <option>billing-worker</option>
+            <option>analytics-engine</option>
+            <option>search-indexer</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Descrizione</label>
+          <textarea id="incDesc" rows="3" placeholder="Descrivi brevemente l'incidente…"></textarea>
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <button class="btn-secondary" data-close-modal="incidentBackdrop">Annulla</button>
+        <button class="btn-primary" id="createIncidentBtn">Crea incidente</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW CUSTOMER -->
+  <div class="modal-backdrop" id="newCustBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Nuovo cliente</h2>
+        <button class="icon-btn" data-close-modal="newCustBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Nome azienda</label>
+          <input type="text" id="custNameInput" placeholder="Es. Stark Industries" />
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" id="custEmailInput" placeholder="hello@example.com" />
+        </div>
+        <div class="form-row">
+          <label>Piano</label>
+          <select id="custPlanInput" class="select-input">
+            <option value="enterprise">Enterprise</option>
+            <option value="pro" selected>Pro</option>
+            <option value="starter">Starter</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>MRR (EUR)</label>
+          <input type="number" id="custMrrInput" placeholder="5000" />
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <button class="btn-secondary" data-close-modal="newCustBackdrop">Annulla</button>
+        <button class="btn-primary" id="createCustomerBtn">Crea cliente</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL: INVITE MEMBER -->
+  <div class="modal-backdrop" id="inviteBackdrop">
+    <div class="modal modal-sm">
+      <header class="modal-head">
+        <h2>Invita membro</h2>
+        <button class="icon-btn" data-close-modal="inviteBackdrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" id="inviteEmail" placeholder="nuovo.membro@example.com" />
+        </div>
+        <div class="form-row">
+          <label>Ruolo</label>
+          <select id="inviteRole" class="select-input">
+            <option value="Admin">Admin</option>
+            <option value="Engineer" selected>Engineer</option>
+            <option value="Designer">Designer</option>
+            <option value="Viewer">Viewer</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Messaggio (opzionale)</label>
+          <textarea id="inviteMessage" rows="3" placeholder="Ciao! Ti invito su nowii·ai…"></textarea>
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <button class="btn-secondary" data-close-modal="inviteBackdrop">Annulla</button>
+        <button class="btn-primary" id="sendInviteBtn">Invia invito</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL: USER MENU -->
+  <div class="modal-backdrop" id="userBackdrop">
+    <div class="modal modal-xs">
+      <div class="user-menu-panel">
+        <div class="user-menu-head">
+          <span class="user-menu-avatar">NC</span>
+          <div>
+            <strong>nowii-core</strong>
+            <small>admin@acme.com</small>
+          </div>
+        </div>
+        <div class="user-menu-list">
+          <button class="user-menu-item" id="userProfile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profilo
+          </button>
+          <button class="user-menu-item" id="userSettings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H2a2 2 0 110-4h.09A1.65 1.65 0 004 8a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H8a1.65 1.65 0 001-1.51V2a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V8a1.65 1.65 0 001.51 1H22a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Impostazioni
+          </button>
+          <button class="user-menu-item" id="themeToggleBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+            Cambia tema
+          </button>
+          <button class="user-menu-item" id="kbBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Knowledge base
+          </button>
+          <div class="user-menu-divider"></div>
+          <button class="user-menu-item danger" id="logoutBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMAND PALETTE -->
+  <div class="modal-backdrop" id="cmdBackdrop">
+    <div class="cmd-palette">
+      <div class="cmd-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="cmdInput" placeholder="Cerca comandi, pagine, azioni…" />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
