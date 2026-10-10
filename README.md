@@ -7,7 +7,7 @@
 
 Una piattaforma enterprise di AI Operations costruita con **HTML, CSS e JavaScript puri**. Nessuna dipendenza esterna, nessun backend.
 
-## ✨ Funzionalità
+##  Funzionalità
 
 - **Dashboard multi-tenant** con workspace switcher
 - **KPI live** con count-up animato e sparkline dinamiche
@@ -31,13 +31,13 @@ Una piattaforma enterprise di AI Operations costruita con **HTML, CSS e JavaScri
 - **Salvataggio automatico** su localStorage
 - **Scorciatoie tastiera** complete
 
-## 🛠 Tecnologie
+##  Tecnologie
 
 - HTML5
 - CSS3 (Grid, Flexbox, animazioni, backdrop-filter, custom properties)
 - JavaScript (ES6+, Canvas 2D API, localStorage, MutationObserver, Event Delegation)
 
-## 📖 Scorciatoie
+##  Scorciatoie
 
 | Tasto | Azione |
 |---|---|
@@ -48,7 +48,7 @@ Una piattaforma enterprise di AI Operations costruita con **HTML, CSS e JavaScri
 | `1` - `6` | Naviga tra le viste |
 | `ESC` | Chiudi modal / drawer |
 
-## 🚀 Deploy
+##  Deploy
 
 Basta aprire `index.html` nel browser. Per GitHub Pages:
 
@@ -58,6 +58,6 @@ Basta aprire `index.html` nel browser. Per GitHub Pages:
 
 Demo live: `https://nowii-core.github.io/nowii-ai/`
 
-## 📫 Contatti
+##  Contatti
 
 - GitHub: [@nowii-core](https://github.com/nowii-core)
