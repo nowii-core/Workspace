@@ -37,7 +37,7 @@
 
 ![nowii·ai Screenshot](Screenshot-1.png)
 
-> **Live Demo:** [nowii-core.github.io/nowii-ai/nowii-ai/](https://nowii-core.github.io/nowii-ai/nowii-ai/)
+> **Live Demo:** [nowii-core.github.io/Workspace/nowii-ai/](https://nowii-core.github.io/Workspace/nowii-ai/)
 
 ---
 
